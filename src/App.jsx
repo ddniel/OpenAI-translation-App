@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from 'openai';
 import { BeatLoader } from "react-spinners";
 
 const App = () => {
@@ -10,29 +10,30 @@ const App = () => {
   const [translation, setTranslation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_OPENAI_KEY,
+  const openai = new OpenAI({
+    apiKey: 'sk-proj-5hk6KSWAmYZkwLcuBuYyT3BlbkFJSNQW9ekhUeCl78LX33Ml',
+    dangerouslyAllowBrowser: true // This is the default and can be omitted
   });
-  const openai = new OpenAIApi(configuration);
+
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError("");
   };
-
   const translate = async () => {
     const { language, message } = formData;
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `Translate this into ${language}: ${message}`,
+    const response = await openai.chat.completions.create({
+      messages: [{ role: 'user', content: `Translate this into ${language}: ${message}` }],
+      model: 'gpt-3.5-turbo',
       temperature: 0.3,
       max_tokens: 100,
       top_p: 1.0,
       frequency_penalty: 0.0,
-      presence_penalty: 0.0,
+      presence_penalty: 0.0
     });
-
-    const translatedText = response.data.choices[0].text.trim();
+    console.log(response)
+    console.log(response.choices)
+    const translatedText = response.choices[0].message.content.trim();
     setIsLoading(false);
     setTranslation(translatedText);
   };
