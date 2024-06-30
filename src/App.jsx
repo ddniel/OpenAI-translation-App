@@ -7,6 +7,7 @@ const App = () => {
   const [formData, setFormData] = useState({
     language: "Spanish",
     message: "",
+    model: "gpt-3.5-turbo",
   });
   const [error, setError] = useState("");
   const [showNotification, setShowNotification] = useState(false);
@@ -80,18 +81,34 @@ const App = () => {
       <div className="container">
         <form onSubmit={handleOnSubmit}>
           <div className="choices">
-            <select
-              name="language"
-              id="language"
-              value={formData.language}
-              onChange={handleInputChange}
-            >
-              <option value="English">🇺🇸 English</option>
-              <option value="Spanish">🇪🇸 Spanish</option>
-              <option value="French">🇫🇷 French</option>
-              <option value="Hindi">🇮🇳 Hindi</option>
-              <option value="Japanese">🇯🇵 Japanese</option>
-            </select>
+            <div className="select">
+              <select
+                name="model"
+                id="model"
+                value={formData.model}
+                onChange={handleInputChange}
+              >
+                <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                <option value="gpt-4">gpt-4</option>
+                <option value="gpt-4-turbo">gpt-4-turbo</option>
+                <option value="gpt-4o">gpt-4o</option>
+              </select>
+            </div>
+
+            <div className="select">
+              <select
+                name="language"
+                id="language"
+                value={formData.language}
+                onChange={handleInputChange}
+              >
+                <option value="English">🇺🇸 English</option>
+                <option value="Spanish">🇪🇸 Spanish</option>
+                <option value="French">🇫🇷 French</option>
+                <option value="Hindi">🇮🇳 Hindi</option>
+                <option value="Japanese">🇯🇵 Japanese</option>
+              </select>
+            </div>
           </div>
 
           <div className="text-container">

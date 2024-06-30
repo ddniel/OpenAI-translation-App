@@ -23,9 +23,7 @@ nav {
   padding: 0 25px;
 }
 
-
-
-.container{
+.container {
   display: flex;
   padding: 40px 50px;
   flex-direction: column;
@@ -33,13 +31,17 @@ nav {
   margin-top: 4rem;
 }
 
-.choices{
-  background-color: #0259D4;
+.choices {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+}
+
+.select {
+  background-color: #0259d4;
   padding: 10px 15px;
   border-radius: 30px;
-  text-align: center;
-  width: 200px;
-  margin: auto;
   box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.2);
 }
 
@@ -51,7 +53,8 @@ nav {
   border-radius: 10px;
 }
 
-option, select{
+option,
+select {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -61,8 +64,7 @@ option, select{
   border: none;
 }
 
-
-.text-container{
+.text-container {
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -80,10 +82,10 @@ option, select{
 }
 
 .translation {
-  background-color: #0259D4 !important;
+  background-color: #0259d4 !important;
 }
 
-.translation-msg{
+.translation-msg {
   font-size: 20px;
   height: 100%;
   width: 100%;
@@ -98,7 +100,6 @@ option, select{
 form {
   display: flex;
   flex-direction: column;
-  
 }
 
 .container button {
@@ -107,16 +108,16 @@ form {
   border-radius: 30px;
   padding: 10px 15px;
   background: #fff;
-  color: #0259D4;
+  color: #0259d4;
   cursor: pointer;
   width: 200px;
-  margin:20px auto 0 auto;
+  margin: 20px auto 0 auto;
   box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.2);
 }
 
-.container button:hover{
+.container button:hover {
   color: #fff;
-  background-color: #0259D4;
+  background-color: #0259d4;
 }
 
 .text-card {
