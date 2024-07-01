@@ -1,9 +1,10 @@
 ## Assignment
 
-- Option to choose different Models
+- [x] Option to choose different Models
 - Store the results in Postgres
   - Init DB File
   - Columns (model, language, message, translatedText)
   - Translations Controller
 - Perform Analisis to see which model is better (using python)
 - Deploy the App in Render
+- Add more features

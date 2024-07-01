@@ -5,6 +5,7 @@ import { FaCopy } from "react-icons/fa";
 
 const App = () => {
   const [formData, setFormData] = useState({
+    action: "translate",
     language: "Spanish",
     message: "",
     model: "gpt-3.5-turbo",
@@ -81,6 +82,18 @@ const App = () => {
       <div className="container">
         <form onSubmit={handleOnSubmit}>
           <div className="choices">
+            <div className="select">
+              <select
+                name="action"
+                id="action"
+                value={formData.action}
+                onChange={handleInputChange}
+              >
+                <option value="translate">💬 Translate</option>
+                <option value="synonyms">👥 Synonyms</option>
+                <option value="grammar">✅ Grammar Check</option>
+              </select>
+            </div>
             <div className="select">
               <select
                 name="model"
