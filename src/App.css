@@ -160,3 +160,26 @@ form {
 .error {
   color: red;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .text-container {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .choices {
+    flex-direction: column;
+    gap: 8px;
+    max-width: 200px;
+    align-self: center;
+  }
+
+  .card {
+    max-width: 350px;
+  }
+
+  .container {
+    padding: 5px 1px;
+  }
+}
