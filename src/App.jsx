@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { BeatLoader } from "react-spinners";
 import { FaCopy } from "react-icons/fa";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const App = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5500/translations", {
+      const response = await fetch(`${API_URL}/translations`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
