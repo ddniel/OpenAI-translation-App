@@ -86,18 +86,6 @@ const App = () => {
           <div className="choices">
             <div className="select">
               <select
-                name="action"
-                id="action"
-                value={formData.action}
-                onChange={handleInputChange}
-              >
-                <option value="translate">💬 Translate</option>
-                <option value="synonyms">👥 Synonyms</option>
-                <option value="grammar">✅ Grammar Check</option>
-              </select>
-            </div>
-            <div className="select">
-              <select
                 name="model"
                 id="model"
                 value={formData.model}
@@ -105,6 +93,7 @@ const App = () => {
               >
                 <option value="ChatGPT">ChatGPT</option>
                 <option value="Gemini">Gemini</option>
+                <option value="Deepl">Deepl</option>
               </select>
             </div>
 
@@ -130,10 +119,26 @@ const App = () => {
                   value={formData.version}
                   onChange={handleInputChange}
                 >
-                  <option value="Basic">Basic</option>
+                  <option value="Default">Default</option>
                 </select>
               </div>
             )}
+            <div className="select">
+              <select
+                name="action"
+                id="action"
+                value={formData.action}
+                onChange={handleInputChange}
+              >
+                <option value="translate">💬 Translate</option>
+                {formData.model !== "Deepl" && (
+                  <>
+                    <option value="synonyms">👥 Synonyms</option>
+                    <option value="grammar">✅ Grammar Check</option>
+                  </>
+                )}
+              </select>
+            </div>
 
             <div className="select">
               <select
@@ -145,7 +150,9 @@ const App = () => {
                 <option value="English">🇺🇸 English</option>
                 <option value="Spanish">🇪🇸 Spanish</option>
                 <option value="French">🇫🇷 French</option>
-                <option value="Hindi">🇮🇳 Hindi</option>
+                {formData.model !== "Deepl" && (
+                  <option value="Hindi">🇮🇳 Hindi</option>
+                )}
                 <option value="Japanese">🇯🇵 Japanese</option>
               </select>
             </div>
