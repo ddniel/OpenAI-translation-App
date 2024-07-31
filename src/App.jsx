@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, version } from "react";
 import "./App.css";
 import { BeatLoader } from "react-spinners";
 import { FaCopy } from "react-icons/fa";
@@ -9,7 +9,8 @@ const App = () => {
     action: "translate",
     language: "Spanish",
     message: "",
-    model: "gpt-3.5-turbo",
+    version: "gpt-3.5-turbo",
+    model: "ChatGPT",
   });
   const [error, setError] = useState("");
   const [showNotification, setShowNotification] = useState(false);
@@ -44,9 +45,9 @@ const App = () => {
       });
 
       const data = await response.json();
-      console.log(data.translatedText);
+      console.log(data.result);
 
-      setTranslation(data.translatedText);
+      setTranslation(data.result);
       setIsLoading(false);
     } catch (error) {
       console.error("Error:", error);
@@ -102,12 +103,37 @@ const App = () => {
                 value={formData.model}
                 onChange={handleInputChange}
               >
-                <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
-                <option value="gpt-4">gpt-4</option>
-                <option value="gpt-4-turbo">gpt-4-turbo</option>
-                <option value="gpt-4o">gpt-4o</option>
+                <option value="ChatGPT">ChatGPT</option>
+                <option value="Gemini">Gemini</option>
               </select>
             </div>
+
+            {formData.model === "ChatGPT" ? (
+              <div className="select">
+                <select
+                  name="version"
+                  id="version"
+                  value={formData.version}
+                  onChange={handleInputChange}
+                >
+                  <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                  <option value="gpt-4">gpt-4</option>
+                  <option value="gpt-4-turbo">gpt-4-turbo</option>
+                  <option value="gpt-4o">gpt-4o</option>
+                </select>
+              </div>
+            ) : (
+              <div className="select">
+                <select
+                  name="version"
+                  id="version"
+                  value={formData.version}
+                  onChange={handleInputChange}
+                >
+                  <option value="Basic">Basic</option>
+                </select>
+              </div>
+            )}
 
             <div className="select">
               <select

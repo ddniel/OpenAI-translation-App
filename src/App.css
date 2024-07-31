@@ -64,6 +64,22 @@ select {
   border: none;
 }
 
+/* select {
+  appearance: none;
+  position: relative;
+}
+
+select::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 16px;
+  color: black; */
+/* } */
+
 .text-container {
   display: flex;
   justify-content: center;
