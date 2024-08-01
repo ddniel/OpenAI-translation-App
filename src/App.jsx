@@ -22,6 +22,20 @@ const App = () => {
     setError("");
   };
 
+  const handleModelChange = (e) => {
+    const ver = {
+      ChatGPT: "gpt-3.5-turbo",
+      Gemini: "gemini-1.5-flash",
+      Deepl: "Default",
+    };
+
+    setFormData({
+      ...formData,
+      model: e.target.value,
+      version: ver[e.target.value],
+    });
+  };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     if (!formData.message) {
@@ -89,7 +103,7 @@ const App = () => {
                 name="model"
                 id="model"
                 value={formData.model}
-                onChange={handleInputChange}
+                onChange={handleModelChange}
               >
                 <option value="ChatGPT">ChatGPT</option>
                 <option value="Gemini">Gemini</option>
@@ -97,12 +111,12 @@ const App = () => {
               </select>
             </div>
 
-            {formData.model === "ChatGPT" ? (
+            {formData.model === "ChatGPT" && (
               <div className="select">
                 <select
                   name="version"
                   id="version"
-                  value={formData.version}
+                  value="gpt-3.5-turbo"
                   onChange={handleInputChange}
                 >
                   <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
@@ -111,22 +125,37 @@ const App = () => {
                   <option value="gpt-4o">gpt-4o</option>
                 </select>
               </div>
-            ) : (
+            )}
+            {formData.model === "Gemini" && (
               <div className="select">
                 <select
                   name="version"
                   id="version"
-                  value={formData.version}
+                  onChange={handleInputChange}
+                >
+                  <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+                  <option value="gemini-1.5-pro">gemini-1.5-pro</option>
+                </select>
+              </div>
+            )}
+            {formData.model === "Deepl" && (
+              <div className="select">
+                <select
+                  name="version"
+                  id="version"
+                  value="Default"
                   onChange={handleInputChange}
                 >
                   <option value="Default">Default</option>
                 </select>
               </div>
             )}
+
             <div className="select">
               <select
                 name="action"
                 id="action"
+                defaultValue="Default"
                 value={formData.action}
                 onChange={handleInputChange}
               >
